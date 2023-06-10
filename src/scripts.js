@@ -20,8 +20,8 @@ window.addEventListener('load', () => {
       customers = data[0].customers;
       rooms = data[1].rooms;
       bookings = data[2].bookings;
-      console.log(customers)
-      console.log(rooms)
-      console.log(bookings)
+      console.log('customers', customers)
+      console.log('rooms', rooms)
+      console.log('bookings', bookings)
     });
 });
