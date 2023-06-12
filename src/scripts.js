@@ -8,7 +8,7 @@ import './css/styles.css';
 import './images/turing-logo.png'
 import {promises} from './api-calls.js'
 import {usernameToId, findUser, simpleFilter, usersRooms, usersCost} from './overlook.js';
-import {userInfo, displayUsersBookings, filterPanel, date, mainPanel} from './dom-updates.js'
+import {userInfo, displayUsersBookings, filterPanel, date, makeDate, formatDate, mainPanel} from './dom-updates.js'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 let customers;
@@ -19,6 +19,8 @@ let currentUser;
 let currentBookings;
 let currentUsersRooms;
 let currentUsersCost;
+let dateSelector;
+let roomTypeSelector;
 
 window.addEventListener('load', () => {
   promises()
@@ -42,20 +44,24 @@ window.addEventListener('load', () => {
       userInfo(currentUser, currentUsersCost)
       displayUsersBookings(currentUsersRooms)
       console.log(rooms.map(x => x.roomType))
+      makeDate()
+      date.setAttribute("min", makeDate())
     });
 });
 
 
-filterPanel.addEventListener('input' && 'click', e => {
-  let dateSelector;
-  let roomTypeSelector;
-  if (e.target.classList.contains('date')) {
-    dateSelector = date.value
-  } else if (e.target.classList.contains('type')) {
-    roomTypeSelector = type.value  
-  } else if (e.target.classList.contains('submit')) {
-  console.log(date.value)
-  console.log(type.value)
+filterPanel.addEventListener('click', e => {
+
+  if (e.target.classList.contains('submit')) {
+    dateSelector = formatDate(date.value)
+    roomTypeSelector = type.value
+  console.log(dateSelector)
+  console.log(roomTypeSelector)
   console.log('asdsadds')
   }
 });
+
+// document.getElementById("firstDateId").onchange = function () {
+//   var input = document.getElementById("secondDateId");
+//   input.setAttribute("min", this.value);
+// }
