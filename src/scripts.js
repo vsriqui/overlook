@@ -7,7 +7,7 @@ import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import {promises} from './api-calls.js'
-import {usernameToId, findUser, usersBookings, usersRooms, usersCost} from './overlook.js';
+import {usernameToId, findUser, simpleFilter, usersRooms, usersCost} from './overlook.js';
 import {userInfo, displayUsersBookings, filterPanel, date, mainPanel} from './dom-updates.js'
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -33,7 +33,7 @@ window.addEventListener('load', () => {
       console.log(currentUserId)
       currentUser = findUser(customers, currentUserId)
       console.log(currentUser)
-      currentBookings = usersBookings(bookings, currentUserId)
+      currentBookings = simpleFilter(bookings, 'userID', currentUserId)
       console.log(currentBookings, 'asdasdasd')
       currentUsersRooms = usersRooms(currentBookings, rooms)
       console.log(currentUsersRooms)
@@ -46,8 +46,16 @@ window.addEventListener('load', () => {
 });
 
 
-filterPanel.addEventListener('input', e => {
+filterPanel.addEventListener('input' && 'click', e => {
+  let dateSelector;
+  let roomTypeSelector;
   if (e.target.classList.contains('date')) {
-    console.log(date.value)
+    dateSelector = date.value
+  } else if (e.target.classList.contains('type')) {
+    roomTypeSelector = type.value  
+  } else if (e.target.classList.contains('submit')) {
+  console.log(date.value)
+  console.log(type.value)
+  console.log('asdsadds')
   }
 });
