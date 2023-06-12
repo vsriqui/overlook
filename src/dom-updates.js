@@ -1,6 +1,8 @@
 const userDoc = document.querySelector('.user-name');
 const costDoc = document.querySelector('.user-cost');
 const mainPanel = document.querySelector('.main-panel');
+const filterPanel = document.querySelector('.filter-panel');
+const date = document.querySelector('.date');
 
 
 const userInfo = (name, cost) => {
@@ -9,9 +11,9 @@ const userInfo = (name, cost) => {
 }
 
 const displayUsersBookings = (bookinz) => {
-  bookinz.sort((a,b)=> a.date-b.date).forEach(booked => {
+  bookinz.sort((a,b)=> a.costPerNight-b.costPerNight).forEach(booked => {
     mainPanel.innerHTML += `
-    <section class='booked' id='${booked.date}'>
+    <button class='booked' id='${booked.date}'>
       <h2>Thank you for your patronage</h2>
       <p>Your room number is ${booked.number}. It's a 
       ${booked.roomType} with a
@@ -19,7 +21,7 @@ const displayUsersBookings = (bookinz) => {
       ${booked.numBeds} number of beds. It is
       ${booked.bidet} that it has a bidet. Your cost per night is
       ${booked.costPerNight}. You're staying here ${booked.date}.</p>
-    </section>
+    </button>
     `;
   })
 }
@@ -28,4 +30,6 @@ const displayUsersBookings = (bookinz) => {
 export {
   userInfo,
   displayUsersBookings,
+  filterPanel,
+  date,
 }

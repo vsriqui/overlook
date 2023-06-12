@@ -8,7 +8,7 @@ import './css/styles.css';
 import './images/turing-logo.png'
 import {promises} from './api-calls.js'
 import {usernameToId, findUser, usersBookings, usersRooms, usersCost} from './overlook.js';
-import {userInfo, displayUsersBookings} from './dom-updates.js'
+import {userInfo, displayUsersBookings, filterPanel, date} from './dom-updates.js'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 let customers;
@@ -42,4 +42,11 @@ window.addEventListener('load', () => {
       userInfo(currentUser, currentUsersCost)
       displayUsersBookings(currentUsersRooms)
     });
+});
+
+
+filterPanel.addEventListener('input', e => {
+  if (e.target.classList.contains('date')) {
+    console.log(date.value)
+  }
 });
