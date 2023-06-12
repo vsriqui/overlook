@@ -7,9 +7,9 @@ const usernameToId = (userName) => {
 const findUser = ( customerData, uID) => {
   return customerData.find(person => person.id === uID).name
 };
-  
-const usersBookings = (bookingsData, usersID) => {
-  return bookingsData.filter(x => x.userID === usersID)
+
+const simpleFilter = (data, key, searchFor) => {
+  return data.filter(x => x[key] === searchFor)
 }; 
 
 const usersRooms = (usersBookings, overlookRooms) => {
@@ -33,7 +33,7 @@ const usersCost = (theRooms) => {
 export {
   usernameToId,
   findUser,
-  usersBookings,
+  simpleFilter,
   usersRooms,
   usersCost,
 };

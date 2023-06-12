@@ -11,7 +11,7 @@ const userInfo = (name, cost) => {
 }
 
 const displayUsersBookings = (bookinz) => {
-  bookinz.sort((a,b)=> a.costPerNight-b.costPerNight).forEach(booked => {
+  bookinz.sort((a,b)=> Number(a.date.split('/').join(''))- Number(b.date.split('/').join(''))).forEach(booked => {
     mainPanel.innerHTML += `
     <button class='booked' id='${booked.date}'>
       <h2>Thank you for your patronage</h2>
@@ -32,4 +32,5 @@ export {
   displayUsersBookings,
   filterPanel,
   date,
+  mainPanel,
 }

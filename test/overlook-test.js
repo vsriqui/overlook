@@ -1,7 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
 import { peoplesTest, bookingsTest, roomsTest} from '../src/data/test-data.js';
-import {  usernameToId, findUser, usersBookings, usersRooms, usersCost} from '../src/overlook.js';
+import {  usernameToId, findUser, simpleFilter, usersRooms, usersCost} from '../src/overlook.js';
 
 
 describe('See if the tests are running', function() {
@@ -96,14 +96,18 @@ describe('', () => {
   });
   });
 
-  describe('usersBookings', () => {
+  describe('filter', () => {
     it('Should be a function', () => {
-      expect(usersBookings).to.be.a('function');
+      expect(simpleFilter).to.be.a('function');
     });
     it('Should find users bookings', () => {
-      result = usersBookings(bookingsTest, userID);
+      result = simpleFilter(bookingsTest, 'userID',userID);
       expect(result).to.deep.equal(usersTestBookings);
   });
+  it('Should filter rooms by type', () => {
+    result = simpleFilter(roomsTest, 'roomType', 'suite');
+    expect(result).to.deep.equal([roomsTest[2]]);
+});
   });
 
   describe('usersRooms', () => {
