@@ -27,6 +27,7 @@ const usersCost = (theRooms) => {
   return Number(theRooms.reduce((acc,cur) => acc + cur.costPerNight, 0).toFixed(2))
 };
 
+
   
 
 export {

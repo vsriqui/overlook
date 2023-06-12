@@ -8,7 +8,7 @@ import './css/styles.css';
 import './images/turing-logo.png'
 import {promises} from './api-calls.js'
 import {usernameToId, findUser, usersBookings, usersRooms, usersCost} from './overlook.js';
-import {userInfo} from './dom-updates.js'
+import {userInfo, displayUsersBookings} from './dom-updates.js'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 let customers;
@@ -40,5 +40,6 @@ window.addEventListener('load', () => {
       currentUsersCost = usersCost(currentUsersRooms)
       console.log(currentUsersCost)
       userInfo(currentUser, currentUsersCost)
+      displayUsersBookings(currentUsersRooms)
     });
 });
