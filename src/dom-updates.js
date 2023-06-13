@@ -3,6 +3,7 @@ const costDoc = document.querySelector('.user-cost');
 const mainPanel = document.querySelector('.main-panel');
 const filterPanel = document.querySelector('.filter-panel');
 const date = document.querySelector('.date');
+const nav = document.querySelector('.nav');
 
 let formatted;
 
@@ -73,4 +74,5 @@ export {
   makeDate,
   formatDate,
   displayPossibleBookings,
+  nav,
 }

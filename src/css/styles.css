@@ -97,3 +97,7 @@ main {
   border: 0%;
   background-color: #c1b7cc;
 }
+
+.hidden {
+  display: none;
+};
