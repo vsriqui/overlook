@@ -7,8 +7,8 @@ import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import {promises} from './api-calls.js'
-import {usernameToId, findUser, usersBookings, usersRooms, usersCost} from './overlook.js';
-import {userInfo} from './dom-updates.js'
+import {usernameToId, findUser, simpleFilter, usersRooms, usersCost, usableRooms} from './overlook.js';
+import {userInfo, displayUsersBookings, filterPanel, date, makeDate, formatDate, displayPossibleBookings, mainPanel} from './dom-updates.js'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 let customers;
@@ -19,6 +19,11 @@ let currentUser;
 let currentBookings;
 let currentUsersRooms;
 let currentUsersCost;
+let dateSelector;
+let roomTypeSelector;
+let filteredRoomsByType;
+let filterUsedOnDate;
+let roomsAvailable;
 
 window.addEventListener('load', () => {
   promises()
@@ -33,12 +38,42 @@ window.addEventListener('load', () => {
       console.log(currentUserId)
       currentUser = findUser(customers, currentUserId)
       console.log(currentUser)
-      currentBookings = usersBookings(bookings, currentUserId)
+      currentBookings = simpleFilter(bookings, 'userID', currentUserId)
       console.log(currentBookings, 'asdasdasd')
       currentUsersRooms = usersRooms(currentBookings, rooms)
       console.log(currentUsersRooms)
       currentUsersCost = usersCost(currentUsersRooms)
       console.log(currentUsersCost)
       userInfo(currentUser, currentUsersCost)
+      displayUsersBookings(currentUsersRooms)
+      console.log(rooms.map(x => x.roomType))
+      makeDate()
+      console.log(makeDate())
+      date.setAttribute("min", makeDate())
     });
+});
+
+mainPanel.addEventListener('click', e => {
+  if (e.target.classList.contains('main-booking')) {
+    console.log(e.target.id, 'specified ID')
+  } 
+  console.log(e.target.id, 'this is the ID')
+});
+
+filterPanel.addEventListener('click', e => {
+
+  if (e.target.classList.contains('submit')) {
+    dateSelector = formatDate(date.value)
+    roomTypeSelector = type.value
+  console.log(dateSelector)
+  console.log(roomTypeSelector)
+  console.log('asdsadds')
+filteredRoomsByType = simpleFilter(rooms, 'roomType', roomTypeSelector)
+console.log(filteredRoomsByType, 'filtered by selected room type')
+filterUsedOnDate = simpleFilter(bookings, 'date', dateSelector);
+console.log(filterUsedOnDate, 'filtered by selected date')
+roomsAvailable = usableRooms(filterUsedOnDate ,filteredRoomsByType)
+console.log(roomsAvailable)
+displayPossibleBookings(roomsAvailable)
+  }
 });

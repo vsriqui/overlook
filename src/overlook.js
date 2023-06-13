@@ -7,10 +7,21 @@ const usernameToId = (userName) => {
 const findUser = ( customerData, uID) => {
   return customerData.find(person => person.id === uID).name
 };
-  
-const usersBookings = (bookingsData, usersID) => {
-  return bookingsData.filter(x => x.userID === usersID)
+
+const simpleFilter = (data, key, searchFor) => {
+  return data.filter(x => x[key] === searchFor)
 }; 
+
+const usableRooms = (used, type) => {
+  let taken = used.map(room => room.roomNumber)
+    let available = [];
+    type.forEach(room => {
+      if (!taken.includes(room.number))
+        available.push(room)
+      })
+  
+    return available 
+  }
 
 const usersRooms = (usersBookings, overlookRooms) => {
   let roomBookings = usersBookings
@@ -27,12 +38,14 @@ const usersCost = (theRooms) => {
   return Number(theRooms.reduce((acc,cur) => acc + cur.costPerNight, 0).toFixed(2))
 };
 
+
   
 
 export {
   usernameToId,
   findUser,
-  usersBookings,
+  simpleFilter,
   usersRooms,
   usersCost,
+  usableRooms,
 };
