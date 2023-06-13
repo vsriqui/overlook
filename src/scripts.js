@@ -8,7 +8,7 @@ import './css/styles.css';
 import './images/turing-logo.png'
 import {promises} from './api-calls.js'
 import {usernameToId, findUser, simpleFilter, usersRooms, usersCost, usableRooms} from './overlook.js';
-import {userInfo, displayUsersBookings, filterPanel, date, makeDate, formatDate, mainPanel} from './dom-updates.js'
+import {userInfo, displayUsersBookings, filterPanel, date, makeDate, formatDate, displayPossibleBookings, mainPanel} from './dom-updates.js'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 let customers;
@@ -53,6 +53,12 @@ window.addEventListener('load', () => {
     });
 });
 
+mainPanel.addEventListener('click', e => {
+  if (e.target.classList.contains('main-booking')) {
+    console.log(e.target.id, 'specified ID')
+  } 
+  console.log(e.target.id, 'this is the ID')
+});
 
 filterPanel.addEventListener('click', e => {
 
@@ -68,10 +74,6 @@ filterUsedOnDate = simpleFilter(bookings, 'date', dateSelector);
 console.log(filterUsedOnDate, 'filtered by selected date')
 roomsAvailable = usableRooms(filterUsedOnDate ,filteredRoomsByType)
 console.log(roomsAvailable)
+displayPossibleBookings(roomsAvailable)
   }
 });
-
-// document.getElementById("firstDateId").onchange = function () {
-//   var input = document.getElementById("secondDateId");
-//   input.setAttribute("min", this.value);
-// }
