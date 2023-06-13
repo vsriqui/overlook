@@ -7,7 +7,7 @@ import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import {promises} from './api-calls.js'
-import {usernameToId, findUser, simpleFilter, usersRooms, usersCost, usableRooms} from './overlook.js';
+import {usernameToId, findUser, simpleFilter, usersRooms, usersCost, usableRooms, selectRoom} from './overlook.js';
 import {userInfo, displayUsersBookings, filterPanel, date, makeDate, formatDate, displayPossibleBookings, mainPanel} from './dom-updates.js'
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -56,6 +56,8 @@ window.addEventListener('load', () => {
 mainPanel.addEventListener('click', e => {
   if (e.target.classList.contains('main-booking')) {
     console.log(e.target.id, 'specified ID')
+    selectRoom(e.target.id, currentBookings, currentUserId, dateSelector)
+    console.log(currentBookings, 'update the users booked')
   } 
   console.log(e.target.id, 'this is the ID')
 });
