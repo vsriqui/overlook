@@ -60,6 +60,7 @@ loginPage.addEventListener('click', (e) => {
       bookings = data[2].bookings;
       currentUserId = usernameToId(loginUsername.value)
       currentUser = findUser(customers, currentUserId)
+      console.log(currentUser)
       currentBookings = simpleFilter(bookings, 'userID', currentUserId)
       currentUsersRooms = usersRooms(currentBookings, rooms)
       currentUsersCost = usersCost(currentUsersRooms)
@@ -69,7 +70,8 @@ loginPage.addEventListener('click', (e) => {
       date.setAttribute("min", makeDate())
       loginPage.classList.add('hidden')
       bookingPage.classList.remove('hidden') 
-    });     
+    })
+    .catch(() => alert('Invalid credentials'));     
   } 
 });
 

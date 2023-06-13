@@ -5,7 +5,8 @@ const usernameToId = (userName) => {
 };
      
 const findUser = ( customerData, uID) => {
-  return customerData.find(person => person.id === uID).name
+  let found = customerData.find(person => person.id === uID).name
+  return found
 };
 
 const simpleFilter = (data, key, searchFor) => {
