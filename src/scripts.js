@@ -7,8 +7,8 @@ import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import {promises, post} from './api-calls.js'
-import {usernameToId, findUser, simpleFilter, usersRooms, usersCost, usableRooms, selectRoom} from './overlook.js';
-import {userInfo, displayUsersBookings, filterPanel, date, makeDate, formatDate, displayPossibleBookings, mainPanel, nav} from './dom-updates.js'
+import {usernameToId, findUser, simpleFilter, usersRooms, usersCost, usableRooms} from './overlook.js';
+import {userInfo, displayUsersBookings, filterPanel, date, makeDate, formatDate, displayPossibleBookings, mainPanel, nav, see} from './dom-updates.js'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 let customers;
@@ -56,6 +56,7 @@ window.addEventListener('load', () => {
 nav.addEventListener('click', e => {
   if (e.target.classList.contains('see-bookings')) {
     displayUsersBookings(currentUsersRooms)
+    see.classList.add('hidden') 
   } 
 });
 
@@ -65,7 +66,7 @@ mainPanel.addEventListener('click', e => {
     // selectRoom(e.target.id, currentBookings, currentUserId, dateSelector)
     console.log(currentBookings, 'update the users booked')
     post(Date.now().toString(), currentUserId, dateSelector, Number(e.target.id))
-    .then(alert('You have successfully purchased a room'))
+    .then((alert('You have successfully purchased a room')))
     .then(
     promises()
     .then(data => {
@@ -93,7 +94,8 @@ mainPanel.addEventListener('click', e => {
       date.setAttribute("min", makeDate())
       console.log(currentBookings, 'ahhhhhhhhhhh')
     }));
-  } 
+  }
+  see.classList.add('hidden') 
   console.log(e.target.id, 'this is the ID')
 });
 
@@ -112,5 +114,6 @@ console.log(filterUsedOnDate, 'filtered by selected date')
 roomsAvailable = usableRooms(filterUsedOnDate ,filteredRoomsByType)
 console.log(roomsAvailable)
 displayPossibleBookings(roomsAvailable)
+see.classList.remove('hidden')
   }
 });

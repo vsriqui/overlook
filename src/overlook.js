@@ -38,14 +38,7 @@ const usersCost = (theRooms) => {
   return Number(theRooms.reduce((acc,cur) => acc + cur.costPerNight, 0).toFixed(2))
 };
 
-const selectRoom = (aRoomNumber, userRooms, usersID, aDate) => {
-  userRooms.push({
-    id: Date.now().toString(),
-    userID: usersID,
-    date: aDate,
-    roomNumber: Number(aRoomNumber)
-  })   
-}
+
 
   
 
@@ -56,5 +49,4 @@ export {
   usersRooms,
   usersCost,
   usableRooms,
-  selectRoom
 };
