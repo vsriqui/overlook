@@ -4,24 +4,25 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Webpack Starter Kit</title>
+  <title>Outlook Hotel</title>
 </head>
-<body>
-  <nav>
+<body class="home">
+  <div class="booking-page hidden">
+  <nav class="nav">
     <section class="nav-user"> 
-      <!-- <h2>Hello</h2> -->
-      <h2 class="user-name"></h2>
-      <h2 class="user-cost"></h2>
+      <h2 tabindex="0" class="user-name"></h2>
+      <h2 tabindex="0" class="user-cost"></h2>
     </section>   
-    <h1> Overlook </h1>
-  </nav>
+    <h1 tabindex="0"> Overlook </h1>
+    <button class='see-bookings hidden'> See my bookings </button>
+  </nav class="nav">
   <main>
     <section class="filter-panel">
       
-      <label for="date">Pick a date</label>
+      <label tabindex="0" for="date">Pick a date</label>
       <input type="date" name="date" class="date" id="date" min="" max="2024-12-31">
 
-      <label for="type">Choose a room type</label>
+      <label tabindex="0" for="type">Choose a room type</label>
 
     <select name="roomtype" class="type" id="type">
     <option value="">--Please choose an option--</option>
@@ -34,6 +35,23 @@
     </section>
     <section class="main-panel"></section>
   </main>
+  </div>
+
+
+  <div class="login-page">
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" class="login-username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" class="login-password" required>
+
+    <button class= 'login-button' type="submit">Login</button>
+    <h2 tabindex="0" class= "login-message"></h2>
+  </div>
   <script src="bundle.js"></script>
 </body>
+
 </html>
+
+
+
