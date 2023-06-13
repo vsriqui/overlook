@@ -7,7 +7,7 @@ import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import {promises} from './api-calls.js'
-import {usernameToId, findUser, simpleFilter, usersRooms, usersCost} from './overlook.js';
+import {usernameToId, findUser, simpleFilter, usersRooms, usersCost, usableRooms} from './overlook.js';
 import {userInfo, displayUsersBookings, filterPanel, date, makeDate, formatDate, mainPanel} from './dom-updates.js'
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -21,6 +21,9 @@ let currentUsersRooms;
 let currentUsersCost;
 let dateSelector;
 let roomTypeSelector;
+let filteredRoomsByType;
+let filterUsedOnDate;
+let roomsAvailable;
 
 window.addEventListener('load', () => {
   promises()
@@ -45,6 +48,7 @@ window.addEventListener('load', () => {
       displayUsersBookings(currentUsersRooms)
       console.log(rooms.map(x => x.roomType))
       makeDate()
+      console.log(makeDate())
       date.setAttribute("min", makeDate())
     });
 });
@@ -58,6 +62,12 @@ filterPanel.addEventListener('click', e => {
   console.log(dateSelector)
   console.log(roomTypeSelector)
   console.log('asdsadds')
+filteredRoomsByType = simpleFilter(rooms, 'roomType', roomTypeSelector)
+console.log(filteredRoomsByType, 'filtered by selected room type')
+filterUsedOnDate = simpleFilter(bookings, 'date', dateSelector);
+console.log(filterUsedOnDate, 'filtered by selected date')
+roomsAvailable = usableRooms(filterUsedOnDate ,filteredRoomsByType)
+console.log(roomsAvailable)
   }
 });
 

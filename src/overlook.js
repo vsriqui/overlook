@@ -12,6 +12,17 @@ const simpleFilter = (data, key, searchFor) => {
   return data.filter(x => x[key] === searchFor)
 }; 
 
+const usableRooms = (used, type) => {
+  let taken = used.map(room => room.roomNumber)
+    let available = [];
+    type.forEach(room => {
+      if (!taken.includes(room.number))
+        available.push(room)
+      })
+  
+    return available 
+  }
+
 const usersRooms = (usersBookings, overlookRooms) => {
   let roomBookings = usersBookings
     .map(booking => overlookRooms
@@ -36,4 +47,5 @@ export {
   simpleFilter,
   usersRooms,
   usersCost,
+  usableRooms,
 };

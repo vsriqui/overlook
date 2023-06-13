@@ -101,12 +101,16 @@ describe('', () => {
       expect(simpleFilter).to.be.a('function');
     });
     it('Should find users bookings', () => {
-      result = simpleFilter(bookingsTest, 'userID',userID);
+      result = simpleFilter(bookingsTest, 'userID', userID);
       expect(result).to.deep.equal(usersTestBookings);
   });
   it('Should filter rooms by type', () => {
     result = simpleFilter(roomsTest, 'roomType', 'suite');
     expect(result).to.deep.equal([roomsTest[2]]);
+  });
+  it('Should filter bookings by date', () => {
+    result = simpleFilter(bookingsTest, 'date', '2023/12/24');
+    expect(result).to.deep.equal([usersTestBookings[1]]);
 });
   });
 
