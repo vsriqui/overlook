@@ -3,6 +3,7 @@
 const aAPI = type => {
  return fetch(`http://localhost:3001/api/v1/${type}`)
     .then(response => response.json())
+
     .catch(err => alert('Server is  down, try again later'))
 }
 

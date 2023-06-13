@@ -1,8 +1,14 @@
-* {
-  border:1px solid red;
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #c1b7cc;
+  position: fixed; 
+  margin: 0%;
 }
 
-body {
+.login {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -19,7 +25,6 @@ nav {
   height:  20vh;
   background-color: #f1ebf3;
   margin: .5% .5% .5% 1%;
-  border-radius: 9%;
   align-items: center;
 }
 
@@ -31,26 +36,15 @@ nav {
   height: 17vh;
   margin: .75%  1% 1% 1%;
   background-color: #e3d0f8;
-  border-radius: 9%;
 }
 
 h1 {
   font-size: 3.7vw;
-  margin-left: 10%;
+  margin-left: 25%;
 }
 
 h2 {
-  font-size: 1vw;
-  margin-left: 10%;
-}
-
-h3 {
-  font-size: .8vw;
-  margin-left: 10%;
-}
-
-h4 {
-  font-size: 1vw;
+  font-size: 1.5vw;
   margin-left: 10%;
 }
 
@@ -67,10 +61,11 @@ main {
   width: 18vw;
   height: 73vh;
   margin: .5% 1% .5% 1%; 
-  border-radius: 9%;
   background-color: #f1ebf3;
-  overflow-y: scroll;
-  overflow-x: hidden;
+}
+
+label, .submit, .see-bookings {
+  margin: 7%;
 }
 
 .main-panel {
@@ -79,7 +74,6 @@ main {
   width: 76.5vw;
   height: 73vh;
   margin: .5% .5% .5% 1%;
-  border-radius: 3%;
   background-color: #f1ebf3;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -87,15 +81,13 @@ main {
 
 .book {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: .8vw;
+  text-align: center;
+  font-size: .9vw;
   width: 16vw;
   height: 18vh;
   margin: 1% 1% 1% 1%;
-  position: relative;
   border: 0%;
-  background-color: #c1b7cc;
+  background-color: #e1c5ff;
 }
 
 .hidden {

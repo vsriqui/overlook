@@ -5,12 +5,17 @@ const filterPanel = document.querySelector('.filter-panel');
 const date = document.querySelector('.date');
 const nav = document.querySelector('.nav');
 const see = document.querySelector('.see-bookings');
+const loginPage = document.querySelector('.login-page');
+const loginUsername = document.querySelector('.login-username');
+const loginPassword = document.querySelector('.login-password');
+const bookingPage = document.querySelector('.booking-page');
+let loginMessage = document.querySelector('.login-message');
 
 let formatted;
 
 const userInfo = (name, cost) => {
   userDoc.innerText = name;
-  costDoc.innerText = `Tally: ${cost}$`;
+  costDoc.innerText = `Total Cost: ${cost}$`;
 }
 const displayPossibleBookings = (bookinz) => {
   mainPanel.innerHTML = '';
@@ -24,7 +29,7 @@ const displayPossibleBookings = (bookinz) => {
       ${booked.bedSize} and
       ${booked.numBeds} number of beds. It is
       ${booked.bidet} that it has a bidet. Your cost per night would be
-      ${booked.costPerNight}. You're staying here ${booked.date}.
+      ${booked.costPerNight}.
     </button>
     `;
   })} else {
@@ -77,4 +82,9 @@ export {
   displayPossibleBookings,
   nav,
   see,
+  loginPage,
+  loginUsername,
+  loginPassword,
+  bookingPage,
+  loginMessage
 }
